@@ -1,0 +1,75 @@
+What is ORM?
+ORM stands for Object-Relational Mapper.
+It is a programming technique that lets you interact with a database using objects in your programming language instead of writing raw SQL queries.
+ORM - Entity Framework core , EF 6.X ,Dapper 
+ORM automatically maps:
+Classes in your code → to Tables in the database
+Objects → to Rows
+Properties → to Columns
+
+What is Entity Framework (EF)?
+Entity Framework (EF) is an Object-Relational Mapper (ORM) that allows .NET developers to interact with databases using .NET objects, eliminating the need to write most SQL queries manually.
+
+ADO.NET
+ADO.NET is a low-level data access technology in .NET that allows you to connect to databases, write SQL queries, and retrieve or manipulate data using classes like SqlConnection, SqlCommand, SqlDataReader, etc.
+It requires manual coding to send SQL commands and map results to objects.
+
+
+ADO.NET					EF Core
+You write SQL queries yourself		You work with C# classes (entities) and LINQ
+Uses SqlConnection, SqlCommand, DataReader	Uses DbContext, DbSet, LINQ queries
+Full control over SQL and database operations	EF generates SQL for you
+
+How to setup EF?
+Install EF Core NuGet packages
+Add connection string in appsettings.json
+Create your model classes
+Create DbContext class
+Register DbContext in Program.cs
+Use Migrations to create/update DB
+Use LINQ in controller for CRUD operations
+
+What is meant by DbContext and DbSet ?
+DbContext is a class in the Entity Framework that helps create a 
+COMMUNICATION between the database and the domain/entity class. 
+DbSet<T> represents a table in the database and allows performing LINQ queries or data manipulation(create , add , delete , update)
+
+What are different types of approaches used in EF?
+Database First - The Database First approach enables us to create an 
+model class  from the existing database.used when the database already exists or is managed separately
+Code First - The Code First approach enables us to create a model and their 
+relation using classes and then create the database from these classes. 
+Model First - In this approach, model classes and their relation is created first 
+using the ORM designer and the physical database will be generated using this 
+model. 
+Note: This is available in Entity Framework (classic), not EF Core.
+
+How does EF Core perform CRUD operations?
+Create → context.Add(entity)
+Read → context.Entities.ToList()
+Update → context.Update(entity)
+Delete → context.Remove(entity)
+Save changes → context.SaveChanges()
+
+What is Migration in EF Core?
+Migrations allow you to update your database schema as your model changes over time.
+Add-Migration InitialCreate
+Update-Database
+
+How do you execute raw SQL in EF Core?
+context.Products.FromSqlRaw("SELECT * FROM Products").ToList();
+
+What is Fluent API in Entity Framework?
+Fluent API is a way to configure your EF Core model using C# code, rather than using data annotations like [Key], [Required], etc.
+
+What is the purpose of the OnModelCreating() method?
+Used to configure entity relationships, constraints, keys, etc., using the Fluent API when the model is being built.
+
+What is Shadow Property in EF Core?
+A Shadow Property is a property not defined in your C# entity class, but exists in the EF Core model and is mapped to a column in the database.
+
+
+
+
+
+

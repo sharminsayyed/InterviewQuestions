@@ -1,0 +1,70 @@
+What is model binding?
+Model binding maps data from HTTP requests to action method parameters.
+
+Explain the importance of appsetting.json ?
+it helps to store configuration information like connection string , version 
+
+How to read configuration from appsetting.json ?
+we use the IConfiguration object in the constructor which is injected by mvc core Dependency Injection
+
+Explain Dependency injection?
+DI is a practise of providing dependent object of a class is injected from outside the class rather than the class creating using the new keyword
+It allows you to inject objects (services, repositories, etc.) that a class needs, rather than the class creating them itself
+Instead of creating dependencies manually, they are provided to your class by the framework.
+
+Why do we need DI?
+by delegating object creation outside the caller we have better decoupled system .if we change at one place the changes are reflected across the application seamlessly
+
+How we implement DI?
+to implement Di we need to provide DI objects in ConfigureServices() method using scoped , singleton , transient 
+
+Explain different ways of doing DI ?
+Explain Scoped vs Transient vs Singleton?
+Transient -Instantiates every single time service is injected 
+Scoped -Instantiates once per request is made to server 
+Singleton- Instantiates once in an application life time 
+
+What is Middleware?
+Middleware is a component that is part of the request and response pipeline in an ASP.NET Core application.
+Middleware is code that runs between the HTTP request coming in and the HTTP response going out.
+
+What is the use of Middleware ?
+the user send request tot the controller , controller than invokes the model to access the data ,than controller applies that data to the view  and that is sent as a html 
+Middle helps to execute the preprocessing logic before the request hits the controller 
+
+How to create /implement middleware?
+Add the middleware class using the template 
+write the custom preprocessing logic in the invoke method 
+In Configure() method we add the middleware in the request pipeline using app.UseMiddleWare<> code 
+
+Why use startup.cs file ?
+Startup.cs file helps to configure the DI and middleware
+both the methods are called at the runtime  
+ConfigureServices() - we Configure the Di -use this method to add services to the container 
+Configure() - we add middleware - use this method to configure the the Http request pipeline
+
+What is Razor ?
+it is vieew engine in which we can write html and c# code together 
+	
+What is Routing ?
+It is a process that maps the incoming HTTP request / Url to controller action 
+Routing decides which controller and which action method should handle a specific URL.
+{controller=Home}/{action=Index}/{id?}
+{controller} → Name of the controller (e.g., ProductController)
+{action} → Name of the action method (e.g., Details())
+{id?} → Optional parameter (e.g., 5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
