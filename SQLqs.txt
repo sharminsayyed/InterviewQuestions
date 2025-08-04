@@ -1,0 +1,160 @@
+qs1 - > what is dbms
+--> DBMS is a software system for creating and managing the database .It enables end user to create protect read update and delete data in the database .It allows
+manages security , data integrity
+
+
+qs 2- explain different lang in DBMS
+DDL(data defination language) :create alter drop truncate rename etc
+DML(data manipulation language) :select update delete insert etc
+DCL(data control language):grant and invoke
+TCL(transaction control language):commit rollback savepoint
+CREATE TABLE students (
+   student_id INT PRIMARY KEY,
+   name VARCHAR(50) NOT NULL,
+   age INT,
+   grade VARCHAR(5),
+   admission_date DATE
+);
+
+
+qs3 - what is normalization 
+it is a process of reducong redundancy by organizing the data into multiple table 
+Reducing redundancy means avoiding repetition of the same data in a database.
+1nf ,2nf ,3nf ,bcnf
+
+
+qs4 - what are sql aggregate functions
+it is a function that performs calculation on set of values and returns a single value 
+min() - returns smallest value within the selected column 
+Max() - returns largest value within the selected column 
+count() -returns number of rows in a set 
+sum() -return total sum  of a numnerical column 
+avg() -return average value of a numnerical column
+SELECT SUM(salary) AS total_salary FROM employees;
+
+
+JOINS EX:
+select columnname(s)
+from table1
+INNER JOIN table2
+On table1.columnname = table2.columnname
+
+
+
+VIEW EX:
+CREATE VIEW it_employees AS
+SELECT name, salary
+FROM employees
+WHERE department = 'IT';
+SELECT * FROM it_employees;
+
+
+PRIMARY & FOREIGN KEY EX:
+CREATE TABLE departments (
+    dept_id INT PRIMARY KEY,
+    dept_name VARCHAR(50)
+);
+CREATE TABLE employees (
+    emp_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    salary DECIMAL(10, 2),
+    dept_id INT,
+    FOREIGN KEY (dept_id) REFERENCES departments(dept_id)
+);
+
+
+qs11 -Group By vs Order By
+GROUP BY: Groups similar data (e.g., count students by class)
+SELECT department, COUNT(*) AS total_employees
+FROM employees
+GROUP BY department;
+
+ORDER BY: Sorts the data (e.g., by name or age)
+SELECT name, salary 
+FROM employees
+ORDER BY salary DESC;
+
+
+qs12 -WHERE vs HAVING (both are filtering clauses)
+WHERE: Used to filter before grouping
+SELECT * 
+FROM employees
+WHERE salary > 40000;
+
+HAVING: Used to filter after grouping
+SELECT department, COUNT(*) AS total
+FROM employees
+GROUP BY department
+HAVING COUNT(*) > 1;
+
+IMPT :
+Indexes improve read performance by reducing the amount of data SQL Server needs to scan. Without indexes, it would do a full table scan, which is slower for large tables.
+
+qs14 - What is the difference between UNION and UNION ALL?
+UNION: Combines results and removes duplicates
+UNION ALL: Combines results and keeps duplicates
+SELECT name FROM students
+UNION ALL
+SELECT name FROM teachers;
+
+qs15 - How to find the second highest salary?
+SELECT MAX(salary) 
+FROM employees 
+WHERE salary < (SELECT MAX(salary) FROM employees);
+
+qs16 - How to convert text to date format?
+SELECT STR_TO_DATE('03/07/2025', '%d/%m/%Y');
+
+
+
+qs18 -What is SQL?
+SQL stands for Structured Query Language.
+It is a standard language used to store, retrieve, manage, and manipulate data in a relational database.
+
+
+queries 
+1. Second Highest Salary
+SELECT MAX(Salary) AS SecondHighestSalary
+FROM Employee
+WHERE Salary < (SELECT MAX(Salary) FROM Employee);
+
+2. Employee Count in Each Department
+SELECT Department, COUNT(*) AS EmployeeCount
+FROM Employee
+GROUP BY Department;
+
+3. Duplicate Records (Name + Department)
+SELECT Name, Department, COUNT(*)
+FROM Employee
+GROUP BY Name, Department
+HAVING COUNT(*) > 1;
+
+4. Employees Who Joined in Last 6 Months
+SELECT * 
+FROM Employee
+WHERE JoinDate >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH);
+
+5. Records Between Two Dates
+SELECT * 
+FROM Employee
+WHERE JoinDate BETWEEN '2024-12-01' AND '2025-03-31';
+
+6. Update a Record
+UPDATE Employee
+SET Salary = 62000
+WHERE EmployeeID = 102;
+
+7. Delete Records with NULL Email
+DELETE FROM Employee
+WHERE Email IS NULL;
+
+
+9. Highest and Lowest Salary in Each Department
+SELECT Department, MAX(Salary) AS Highest, MIN(Salary) AS Lowest
+FROM Employee
+GROUP BY Department;
+
+10. Names Starting with 'S' and Ending with 'n'
+SELECT * 
+FROM Employee
+WHERE Name LIKE 'S%n';
