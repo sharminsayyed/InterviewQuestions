@@ -9,3 +9,32 @@ Program.cs contains a CreateHostBuilder() method that uses CreateDefaultBuilder(
 	Integrate dependency injection
 CreateHostBuilder() was used in older projects (< .NET 6).
 Newer projects hide it inside WebApplication.CreateBuilder().
+
+
+WHAT IS THE ROLE OF STARTUP.CS FILE?
+--->
+In ASP.NET Core (before .NET 6), the Startup.cs file is the heart of application configuration — it tells your app what services to use and how to handle HTTP requests.
+Role of Startup.cs
+It is responsible for:
+	Registering services that the app will use (Dependency Injection).
+	Configuring the HTTP request pipeline (Middleware sequence).
+	Setting up things like MVC, authentication, logging, CORS, etc.
+ASP.NET Core 6 and later, Microsoft removed the separate Startup.cs file by default — its functionality is merged into Program.cs using the Minimal Hosting Model.
+// Register services (Startup.cs → ConfigureServices)
+builder.Services.AddControllersWithViews();
+// Configure middleware pipeline (Startup.cs → Configure)
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error");
+}
+
+Two main methods in Startup.cs:
+1. ConfigureServices(IServiceCollection services)
+Optional method 
+This method registers services for Dependency Injection (DI).
+Everything here is application-level services — EF Core, Identity, Caching, Session, etc
+2. Configure(IApplicationBuilder app, IWebHostEnvironment env)
+Not Optional method 
+This method defines how the app responds to HTTP requests and response. 
+It is used to setup request pipeline. — also called the middleware pipeline.
+
