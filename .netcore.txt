@@ -1,0 +1,11 @@
+WHAT IS THE ROLE OF PROGRAM.CS FILE IN ASP.NET CORE? OR WHAT 
+IS CREATEHOSTBUILDER / CREATEDEFAULTBUILDER?
+--->
+Program.cs fille is the entry point of application via Main() method.  
+Program.cs contains a CreateHostBuilder() method that uses CreateDefaultBuilder() to:
+	Set up configuration (appsettings.json, environment variables, etc.)
+	Set up logging
+	Configure Kestrel web server
+	Integrate dependency injection
+CreateHostBuilder() was used in older projects (< .NET 6).
+Newer projects hide it inside WebApplication.CreateBuilder().

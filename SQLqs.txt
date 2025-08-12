@@ -1,9 +1,12 @@
-qs1 - > what is dbms
---> DBMS is a software system for creating and managing the database .It enables end user to create protect read update and delete data in the database .It allows
+what is dbms
+DBMS is a software system for creating and managing the database .It enables end user to create protect read update and delete data in the database .It allows
 manages security , data integrity
 
+What is SQL?
+SQL stands for Structured Query Language.
+It is a standard language used to store, retrieve, manage, and manipulate data in a relational database.
 
-qs 2- explain different lang in DBMS
+explain different lang in DBMS
 DDL(data defination language) :create alter drop truncate rename etc
 DML(data manipulation language) :select update delete insert etc
 DCL(data control language):grant and invoke
@@ -16,14 +19,12 @@ CREATE TABLE students (
    admission_date DATE
 );
 
-
-qs3 - what is normalization 
+what is normalization 
 it is a process of reducong redundancy by organizing the data into multiple table 
 Reducing redundancy means avoiding repetition of the same data in a database.
 1nf ,2nf ,3nf ,bcnf
 
-
-qs4 - what are sql aggregate functions
+what are sql aggregate functions
 it is a function that performs calculation on set of values and returns a single value 
 min() - returns smallest value within the selected column 
 Max() - returns largest value within the selected column 
@@ -32,6 +33,57 @@ sum() -return total sum  of a numnerical column
 avg() -return average value of a numnerical column
 SELECT SUM(salary) AS total_salary FROM employees;
 
+Group By vs Order By
+GROUP BY: Groups similar data (e.g., count students by class)
+SELECT department, COUNT(*) AS total_employees
+FROM employees
+GROUP BY department;
+
+ORDER BY: Sorts the data (e.g., by name or age)
+SELECT name, salary 
+FROM employees
+ORDER BY salary DESC;
+
+WHERE vs HAVING (both are filtering clauses)
+WHERE: Used to filter before grouping
+WHERE Clause is used before GROUP BY Clause. 
+WHERE Clause cannot contain AGGREGATE function. 
+SELECT * 
+FROM employees
+WHERE salary > 40000;
+
+HAVING: Used to filter after grouping
+HAVING Clause is used after GROUP BY Clause. 
+HAVING Clause can contain aggregate function.
+SELECT department, COUNT(*) AS total
+FROM employees
+GROUP BY department
+HAVING COUNT(*) > 1;
+
+WHAT ARE ACID PROPERTIES?
+->Sure! Here's a simple one-liner explanation for each ACID property:
+Atomicity: All steps of a task must happen or none at all.
+Consistency: Data must always be valid and follow rules.
+Isolation: Tasks run separately, even if done at the same time.
+Durability: Once saved, the data won’t be lost — even if system crashes.
+
+What is the difference between UNION and UNION ALL?
+UNION: Combines results and removes duplicates
+UNION ALL: Combines results and keeps duplicates
+SELECT name FROM students
+UNION ALL
+SELECT name FROM teachers;
+
+How to find the second highest salary?
+SELECT MAX(salary) 
+FROM employees 
+WHERE salary < (SELECT MAX(salary) FROM employees);
+
+How to convert text to date format?
+SELECT STR_TO_DATE('03/07/2025', '%d/%m/%Y');
+
+What is a stored procedure?
+A saved collection of SQL statements that can be reused.
 
 JOINS EX:
 select columnname(s)
@@ -41,7 +93,7 @@ On table1.columnname = table2.columnname
 
 
 
-VIEW EX:
+VIEW EX::::
 CREATE VIEW it_employees AS
 SELECT name, salary
 FROM employees
@@ -49,7 +101,7 @@ WHERE department = 'IT';
 SELECT * FROM it_employees;
 
 
-PRIMARY & FOREIGN KEY EX:
+PRIMARY & FOREIGN KEY EX::::
 CREATE TABLE departments (
     dept_id INT PRIMARY KEY,
     dept_name VARCHAR(50)
@@ -62,54 +114,9 @@ CREATE TABLE employees (
     FOREIGN KEY (dept_id) REFERENCES departments(dept_id)
 );
 
-
-qs11 -Group By vs Order By
-GROUP BY: Groups similar data (e.g., count students by class)
-SELECT department, COUNT(*) AS total_employees
-FROM employees
-GROUP BY department;
-
-ORDER BY: Sorts the data (e.g., by name or age)
-SELECT name, salary 
-FROM employees
-ORDER BY salary DESC;
-
-
-qs12 -WHERE vs HAVING (both are filtering clauses)
-WHERE: Used to filter before grouping
-SELECT * 
-FROM employees
-WHERE salary > 40000;
-
-HAVING: Used to filter after grouping
-SELECT department, COUNT(*) AS total
-FROM employees
-GROUP BY department
-HAVING COUNT(*) > 1;
-
 IMPT :
-Indexes improve read performance by reducing the amount of data SQL Server needs to scan. Without indexes, it would do a full table scan, which is slower for large tables.
-
-qs14 - What is the difference between UNION and UNION ALL?
-UNION: Combines results and removes duplicates
-UNION ALL: Combines results and keeps duplicates
-SELECT name FROM students
-UNION ALL
-SELECT name FROM teachers;
-
-qs15 - How to find the second highest salary?
-SELECT MAX(salary) 
-FROM employees 
-WHERE salary < (SELECT MAX(salary) FROM employees);
-
-qs16 - How to convert text to date format?
-SELECT STR_TO_DATE('03/07/2025', '%d/%m/%Y');
-
-
-
-qs18 -What is SQL?
-SQL stands for Structured Query Language.
-It is a standard language used to store, retrieve, manage, and manipulate data in a relational database.
+Indexes improve read performance by reducing the amount of data SQL Server needs to scan.
+ Without indexes, it would do a full table scan, which is slower for large tables.
 
 
 queries 
