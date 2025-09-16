@@ -38,3 +38,9 @@ Not Optional method
 This method defines how the app responds to HTTP requests and response. 
 It is used to setup request pipeline. — also called the middleware pipeline.
 
+🏗️ What is Scaffolding?
+
+Scaffolding is a code generation technique in ASP.NET Core (and .NET in general) that automatically creates boilerplate code for CRUD operations (Create, Read, Update, Delete) against a model class.
+
+Instead of writing controllers and views manually, scaffolding generates them for you based on your model and database context.
+
