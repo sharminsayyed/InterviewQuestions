@@ -11,12 +11,65 @@ Explain Dependency injection?
 DI is a practise of providing dependent object of a class is injected from outside the class rather than the class creating using the new keyword
 It allows you to inject objects (services, repositories, etc.) that a class needs, rather than the class creating them itself
 Instead of creating dependencies manually, they are provided to your class by the framework.
+Dependency Injection (DI) is a software design pattern that allows us to develop 
+loosely coupled code.
+Loosely coupled code means that different parts of your program (classes, methods, modules) are independent and flexible, so changes in one part don’t force changes in another.
 
 Why do we need DI?
 by delegating object creation outside the caller we have better decoupled system .if we change at one place the changes are reflected across the application seamlessly
+“Decouples the two components or clasees ” means loosening or breaking the direct connection between two parts of a program so that they can work independently
+public interface IEngine
+{
+    void Start();
+}
+
+public class Engine : IEngine
+{
+    public void Start()
+    {
+        Console.WriteLine("Engine started");
+    }
+}
+
+public class ElectricEngine : IEngine
+{
+    public void Start()
+    {
+        Console.WriteLine("Electric engine started silently");
+    }
+}
+
+public class Car
+{
+    private IEngine _engine;
+
+    public Car(IEngine engine) // Engine is injected from outside
+    {
+        _engine = engine;
+    }
+
+    public void Drive()
+    {
+        _engine.Start();
+        Console.WriteLine("Car is driving");
+    }
+}
+class Program
+{
+    static void Main()
+    {
+        IEngine engine = new Engine(); // or new ElectricEngine()
+        Car car = new Car(engine);
+
+        car.Drive();
+    }
+}
 
 How we implement DI?
-to implement Di we need to provide DI objects in ConfigureServices() method using scoped , singleton , transient 
+Create an interface for the dependency
+Create a class that implements the interface
+Register the service in Program.cs or Startup.cs with AddTransient, AddScoped, or AddSingleton.
+Use it in a controller (for MVC or API apps)
 
 Explain different ways of doing DI ?
 Explain Scoped vs Transient vs Singleton?

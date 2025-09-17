@@ -35,13 +35,9 @@ COMMUNICATION between the database and the domain/entity class.
 DbSet<T> represents a table in the database and allows performing LINQ queries or data manipulation(create , add , delete , update)
 
 What are different types of approaches used in EF?
-Database First - The Database First approach enables us to create an 
-model class  from the existing database.used when the database already exists or is managed separately
-Code First - The Code First approach enables us to create a model and their 
-relation using classes and then create the database from these classes. 
-Model First - In this approach, model classes and their relation is created first 
-using the ORM designer and the physical database will be generated using this 
-model. 
+1. Database First Approach-You already have a database and want to create models from it.
+2. Code First Approach-You want to define the models in code first, and EF will create the database for you.
+3. Model First Approach-Design a model diagram and generate both the code and database from it.
 Note: This is available in Entity Framework (classic), not EF Core.
 
 How does EF Core perform CRUD operations?
@@ -63,7 +59,7 @@ What is Fluent API in Entity Framework?
 Fluent API is a way to configure your EF Core model using C# code, rather than using data annotations like [Key], [Required], etc.
 
 What is the purpose of the OnModelCreating() method?
-Used to configure entity relationships, constraints, keys, etc., using the Fluent API when the model is being built.
+is used to configure the model’s structure, relationships, constraints, and mappings in EF Core when building the database schema.
 
 What is Shadow Property in EF Core?
 A Shadow Property is a property not defined in your C# entity class, but exists in the EF Core model and is mapped to a column in the database.

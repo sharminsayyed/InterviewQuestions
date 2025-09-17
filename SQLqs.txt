@@ -1,6 +1,25 @@
+
+// first read the 500 .net interview qs 
+// then come here 
+
 what is dbms
 DBMS is a software system for creating and managing the database .It enables end user to create protect read update and delete data in the database .It allows
 manages security , data integrity
+
+Dbms vs Rdbms 
+
+DBMS (Database Management System)
+Stores data in files or simple structures.
+Does not enforce relationships between data.
+Works for small amounts of data.
+
+RDBMS (Relational Database Management System)
+Stores data in tables with rows and columns.
+Can link tables using keys (like student → department).
+Supports SQL queries to fetch and manipulate data.
+Works for large amounts of data.
+Examples: MySQL, SQL Server, PostgreSQL, Oracle.
+
 
 What is SQL?
 SQL stands for Structured Query Language.
@@ -85,6 +104,7 @@ SELECT STR_TO_DATE('03/07/2025', '%d/%m/%Y');
 What is a stored procedure?
 A saved collection of SQL statements that can be reused.
 
+what is innerjoin in sql ? can explain with example 
 JOINS EX:
 select columnname(s)
 from table1
@@ -100,7 +120,7 @@ FROM employees
 WHERE department = 'IT';
 SELECT * FROM it_employees;
 
-
+difference between primary key and foreign key 
 PRIMARY & FOREIGN KEY EX::::
 CREATE TABLE departments (
     dept_id INT PRIMARY KEY,
@@ -132,6 +152,13 @@ select EmployeeID ,EmployeeName ,Salary
 from (select EmployeeID ,EmployeeName ,Salary ,dense_rank() over(order by salary desc) as salaryrank from employees) as RankedSalaries 
 where salaryrank =3;
 
+SELF JOIN
+select e.employeename  as employee ,m.employeename as manager
+from employee as e
+join employee as m
+on e.managerid = m.employeeid;
+
+
 1. Second Highest Salary
 SELECT MAX(Salary) AS SecondHighestSalary
 FROM Employee
@@ -151,7 +178,7 @@ HAVING COUNT(*) > 1;
 4. Employees Who Joined in Last 6 Months
 SELECT * 
 FROM Employee
-WHERE JoinDate >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH);
+WHERE JoinDate >= DATEADD(MONTH, -6, GETDATE());
 
 5. Records Between Two Dates
 SELECT * 
