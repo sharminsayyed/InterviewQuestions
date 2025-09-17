@@ -118,8 +118,20 @@ IMPT :
 Indexes improve read performance by reducing the amount of data SQL Server needs to scan.
  Without indexes, it would do a full table scan, which is slower for large tables.
 
-
+Write a query to join two tables, Orders and Customers, to retrieve customer names and their corresponding order details.
+select c.CustomerName, o.OrderID, o.OrderDate, o.Amount
+from customers c 
+join orders o
+on c.CustomerID = o.CustomerID;
 queries 
+
+nth highest salary 
+select EmployeeID ,EmployeeName ,Salary ,dense_rank() over(order by salary desc) as salaryrank from dbo.Employees;
+
+select EmployeeID ,EmployeeName ,Salary 
+from (select EmployeeID ,EmployeeName ,Salary ,dense_rank() over(order by salary desc) as salaryrank from employees) as RankedSalaries 
+where salaryrank =3;
+
 1. Second Highest Salary
 SELECT MAX(Salary) AS SecondHighestSalary
 FROM Employee
@@ -165,3 +177,7 @@ GROUP BY Department;
 SELECT * 
 FROM Employee
 WHERE Name LIKE 'S%n';
+
+
+
+
