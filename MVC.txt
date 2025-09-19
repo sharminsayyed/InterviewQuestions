@@ -2,10 +2,19 @@ What is model binding?
 Model binding maps data from HTTP requests to action method parameters.
 
 Explain the importance of appsetting.json ?
-it helps to store configuration information like connection string , version 
+it helps to store configuration information like database connections strings, any 
+application scope global variables, etc. 
 
-How to read configuration from appsetting.json ?
-we use the IConfiguration object in the constructor which is injected by mvc core Dependency Injection
+LaunchSettings.json - The launchSettings.json file is used to store the 
+configuration information, which describes how to start the ASP.NET Core 
+application, using Visual Studio For example the hosting details like IIS etc
+
+Appsetting.Json store the configurations which are required when your 
+application is running. 
+
+But Launchsetting.Json store the configuration which are required to start the 
+application. 
+
 
 Explain Dependency injection?
 DI is a practise of providing dependent object of a class is injected from outside the class rather than the class creating using the new keyword
@@ -85,10 +94,53 @@ What is the use of Middleware ?
 the user send request tot the controller , controller than invokes the model to access the data ,than controller applies that data to the view  and that is sent as a html 
 Middle helps to execute the preprocessing logic before the request hits the controller 
 
+How it Works in the Request Pipeline
+Client sends a request → hits the server.
+The request enters the middleware pipeline in the order they are configured in Program.cs or Startup.cs.
+Each middleware:
+Does something with the request (e.g., authentication, logging).
+Calls next() to pass the request to the next middleware.
+Eventually, the request reaches the endpoint (e.g., a controller action).
+The response travels back through the same middleware pipeline in reverse order, allowing each middleware to modify the response if needed.
+Client Request
+       |
+   Middleware 1 (e.g., Logging)
+       |
+   Middleware 2 (e.g., Authentication)
+       |
+   Middleware 3 (e.g., Routing)
+       |
+   Controller / Endpoint
+       |
+Response flows back
+       |
+   Middleware 3
+       |
+   Middleware 2
+       |
+   Middleware 1
+       |
+Client Response
+
+
 How to create /implement middleware?
-Add the middleware class using the template 
-write the custom preprocessing logic in the invoke method 
-In Configure() method we add the middleware in the request pipeline using app.UseMiddleWare<> code 
+Implement IMiddleware interface in your class.
+Put your logic inside InvokeAsync(HttpContext context, RequestDelegate next).
+Register the middleware as a service in DI container.
+Add it to the pipeline using app.UseMiddleware<YourMiddleware>().
+Or optional we can use extension method for cleaner code 
+
+WHAT IS REQUEST DELEGATE? 
+Request delegates handle each HTTP request and are used to BUILD request 
+pipeline by using RUN, MAP and USE extension methods. 
+
+WHAT IS RUN(), USE() AND MAP() METHOD? 
+USE - Use method will execute next middleware in sequence.
+RUN - Run method will TERMINATE the chain. No other middleware method 
+will be allowed to run after this.  
+It normally placed at the end of any pipeline. 
+MAP - Map method will only execute middleware, if path requested by user 
+equals path provided in parameter
 
 Why use startup.cs file ?
 Startup.cs file helps to configure the DI and middleware
@@ -100,6 +152,7 @@ What is Razor ?
 it is vieew engine in which we can write html and c# code together 
 	
 What is Routing ?
+Routing is used to handle incoming HTTP requests based on the URL.
 It is a process that maps the incoming HTTP request / Url to controller action 
 Routing decides which controller and which action method should handle a specific URL.
 {controller=Home}/{action=Index}/{id?}
@@ -107,15 +160,28 @@ Routing decides which controller and which action method should handle a specifi
 {action} → Name of the action method (e.g., Details())
 {id?} → Optional parameter (e.g., 5)
 
+ WHAT IS CACHING IN ASP.NET CORE? 
+Caching refers to the process of storing frequently used data in cache, so 
+that that data can be served much faster for any future requests.  
 
+WHAT IS METAPACKAGE? WHAT IS THE NAME OF METAPACKAGE 
+PROVIDED BY ASP.NET CORE? 
+Metapackage is a consolidated package of all the mandatory dependencies for 
+a .NET Core project. This package is present in your application by default. 
+Microsoft.AspNetCore.App is the metapackage provided by ASP.NET Core. 
 
-
-
-
-
-
-
-
+WHAT IS CROSS-ORIGIN REQUESTS (CORS) IN ASP.NET CORE? WHY 
+CORS RESTRICTION IS REQUIRED?
+As the name suggests Cross Origin Resource Sharing – meaning the data or 
+resource sharing between different or cross domains is not enabled by default. 
+This is restricted. 
+1. First case is when you want to get the response from a different domain. 
+2. Second case is when you want to get the response from a subdomain. 
+3. Third case is when the domain is same, but you are requesting from http and 
+the sender is https. 
+4. And in last case, if the port is different
+CORS is good because of security reason. Your API is secure by default 
+otherwise any external website can try to access your data.
 
 
 

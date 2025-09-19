@@ -1,0 +1,106 @@
+
+Bulky Web is a book-selling application where customers can create accounts, log in, and view books with details like title, author, category, and price based on quantity. Admins have an extra Content Management section to perform CRUD operations on categories and products. It’s built with ASP.NET Core MVC, EF Core, and follows Repository & Unit of Work patterns for clean architecture.
+
+
+
+n-tier architecture 
+N-Tier Architecture means splitting the project into separate layers (tiers), where each layer has a specific responsibility.
+Data Access Layer (DAL) Bulky.DataAccess - this have everything related to database , like we have dbcontext lass ,migration 
+Models Layer Bulky.Models - here we have models for the project 
+Utility Layer Bulky.Utility - for the utility that we will add in our project like email functionality or maybe for constants 
+ Presentation Layer (UI) → BulkyWeb (ASP.NET Core MVC project with Controllers, Views, static files).
+
+usage - Separation of Concerns-This makes the codebase cleaner and easier to understand.
+
+
+Why We Use Repository Pattern in .NET
+The Repository Pattern is used to abstract the data access logic and provide a clean way for the application to interact with the database.
+1. Separation of Concerns
+Without repository → Controllers or Services directly use DbContext and EF Core queries.we do not have to use application db context in the controllers directly
+With repository → 
+With the Repository Pattern, I define repository interfaces like ICategoryRepository that declare methods such as GetAll, Add, Update, etc. My controllers depend only on these interfaces, not on EF Core directly. The actual EF Core logic—like working with DbSet, LINQ, and SaveChanges—is hidden inside the repository implementation. This way, the controller only calls repository methods and doesn’t know or care how the data is being fetched We use repository when we register repositories in the Dependency Injection (DI) container.
+For example, if I switch from EF Core to Dapper tomorrow, I only need to change the repository implementation, not the controller or business logic."
+
+ irepository -getall , getone , add , remove 
+we created Repository class - where we used dbcontext to implement all the methods 
+
+we created ICategory ,IProduct class  which implements Irepository 
+we add the Update() method we added separately beacuse updatae functionality for category and product are both different 
+Category , Product class  extends the repository class and implements the ICategoryRepository interface where we write custom logic for for update method 
+
+here after we have the repository pattern done 
+we can also use this IcategoryRepository ... in the controller 
+
+we can also upgrade to Iunitofwork interface which consist the save method 
+UnitOfWork class contains ICategoryRepository...property and save method 
+
+
+
+unitofwork
+Unit of Work is a pattern that manages multiple database operations in one transaction to ensure consistency and coordinate multiple repositories.beacuse it grops mutiple repository in my case (icategoryrepository ,iproductrepository) under a single shared interface . it tracks  all changes made through repositories and committing them together using Save(). Now the controller only interacts with the unitofwork instead of multiple repositories 
+
+dont use unit of work 
+his can lead to data inconsistency, extra database calls,partial updates, and messier code. 
+
+
+
+User → Controller (UI Layer) → UnitOfWork (BLL + DAL connection) → Repository (DAL) → EF Core/DB
+
+Identity 
+Identity in .NET is used to manage users, authentication, and authorization securely. It handles logins, roles, and permissions, and ensures passwords are stored safely
+
+ViewImports.cshtml is used to import namespaces, tag helpers, and inject services for all views in a folder, avoiding repetition. _ViewStart.cshtml is used to run code before each view renders, most commonly to set a common layout.”
+
+.sln 
+“A .sln file in .NET is a Visual Studio Solution file that organizes multiple projects and their dependencies. It allows Visual Studio to load, build, and manage the projects together.”
+
+csproj stands for C# Project file.
+It is an XML-based file that defines the settings, references, and metadata for a C# project.
+ 
+
+.csproj.user is a user-specific project file associated with a C# project (.csproj).
+It stores settings specific to a developer or a machine
+
+
+What is .cshtml?
+.cshtml stands for C# HTML.
+It is a Razor view file used in ASP.NET MVC / ASP.NET Core to generate dynamic HTML pages.
+Combines HTML markup with C# code using the Razor syntax (@).
+
+
+A ViewModel is a custom C# class that is specifically created to carry only the data required by a particular view (UI) in ASP.NET MVC/Core.
+It may combine data from multiple models (tables/entities) and also include extra properties (like dropdown lists,validation)
+
+We avoid ViewBag and ViewData because they are dynamic, error-prone, and messy for multiple values. ViewModel is strongly typed, organized, supports validation, and makes the code easier to maintain.”
+
+
+An ASP.NET MVC Filter is a custom or built-in class that allows you to inject logic before or after an action method executes (and even before or after the result is generated).
+Filters help with cross-cutting concerns such as authentication, authorization, logging, exception handling, and caching 
+Authorization Filters-[Authorize(Roles="Admin")]
+Exception Filters-[HandleError]
+Result Filters-[OutputCache]
+
+Navigation property :
+“A navigation property in EF Core represents a relationship between entities and allows you to access related data directly
+public Category Category { get; set; }
+
+public class Product
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+
+    // Foreign key linking this product to a category
+    // It stores the Id of the Category to which this product belongs
+    public int CategoryId { get; set; }
+
+    // Navigation property: allows access to the related Category object
+    [ForeignKey("CategoryId")] //explicitly tells EF Core that CategoryId is the foreign key
+    // This enables you to access Category details directly via product.Category
+    public Category Category { get; set; }
+}
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+

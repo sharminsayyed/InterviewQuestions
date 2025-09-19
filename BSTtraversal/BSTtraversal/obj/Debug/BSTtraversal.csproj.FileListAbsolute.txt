@@ -1,0 +1,7 @@
+F:\Sharmin\InterviewQuestions\BSTtraversal\BSTtraversal\bin\Debug\BSTtraversal.exe.config
+F:\Sharmin\InterviewQuestions\BSTtraversal\BSTtraversal\bin\Debug\BSTtraversal.exe
+F:\Sharmin\InterviewQuestions\BSTtraversal\BSTtraversal\bin\Debug\BSTtraversal.pdb
+F:\Sharmin\InterviewQuestions\BSTtraversal\BSTtraversal\obj\Debug\BSTtraversal.csproj.AssemblyReference.cache
+F:\Sharmin\InterviewQuestions\BSTtraversal\BSTtraversal\obj\Debug\BSTtraversal.csproj.CoreCompileInputs.cache
+F:\Sharmin\InterviewQuestions\BSTtraversal\BSTtraversal\obj\Debug\BSTtraversal.exe
+F:\Sharmin\InterviewQuestions\BSTtraversal\BSTtraversal\obj\Debug\BSTtraversal.pdb

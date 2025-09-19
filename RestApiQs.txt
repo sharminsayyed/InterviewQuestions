@@ -1,0 +1,93 @@
+
+
+What is a Web API?
+
+A Web API (Application Programming Interface) is a way for applications to communicate with each other over the web using HTTP.
+
+It allows clients (web, mobile, or other applications) to perform operations like Create, Read, Update, Delete (CRUD).
+
+Web APIs usually send data in JSON or XML format.
+
+ WHAT IS REST AND RESTFUL? 
+REST stands for Representational State Transfer. It is a set of guidelines 
+for desiging apis  where applications can easily communicate 
+with each other.
+
+
+REST Guidelines: 
+1. Separation of Client and Server - the implementation of both can be done independently
+2. Stateless -  Each request is independent (server doesn’t remember past requests).
+3. Uniform interface – Identify of resources by URL 
+4. Cacheable - Data can be cached for better performance.
+5. Layered system - 
+
+RESTFUL: If a system written by applying REST architectural concepts, it is called 
+RESTful services. 
+
+
+| Feature     | ASP.NET Core MVC                      | ASP.NET Core Web API                                          |
+| ----------- | ------------------------------------- | ------------------------------------------------------------- |
+| Purpose     | Returns **HTML views** to the browser | Returns **data (JSON/XML)** to client apps                    |
+| Controllers | `Controller` class with `View()`      | `Controller` class with `IActionResult` returning JSON        |
+| View Engine | Uses Razor Views                      | No views, only data                                           |
+| Typical Use | Web applications with UI              | Mobile apps, single-page apps, integration with other systems |
+
+
+
+4. What status codes do you return from an API?
+Code	Meaning	Example
+200	    OK – Request successful	        
+201	    Created – New resource added	
+400	    Bad Request – Client mistake	
+401	    Unauthorized	                
+404	    Not Found	
+500	    Internal Server Error	        
+
+
+HOW TO TEST WEB API? WHAT ARE THE TOOLS?
+POSTMAN & SWAGGER tools.  are used to test api
+
+How do you secure a Web API?
+Common methods:
+API Key – Client sends a secret key in headers.
+JWT (JSON Web Token) – Stateless token-based authentication.
+OAuth2 – Token-based authorization for third-party access.
+HTTPS – Encrypts data in transit.
+CORS policies – Restrict which domains can call your API.
+
+1[Route] Attribute
+
+Defines the URL pattern for a controller or action.
+
+Can be applied at controller level or action level.
+
+ Returning Data from API Action	
+| Return Type       | Description                                                |
+| ----------------- | ---------------------------------------------------------- |
+| `IActionResult`   | Can return different HTTP responses (`Ok()`, `NotFound()`) |
+| `ActionResult<T>` | Combines type-safe return with HTTP responses              |
+| `JsonResult`      | Returns JSON directly                                      |
+
+
+/What is a DTO?
+        //A DTO is a simple object that only carries data between processes(like from your API to the client, or from client to API).
+        //It usually doesn’t contain any business logic, only properties.
+        //It helps control what data you expose from your models (like your Employee table).
+
+
+
+
+
+6. What are URI and Endpoint?
+URI (Uniform Resource Identifier): A string used to identify a resource.
+
+Example: /api/users/1 – refers to user with ID 1.
+
+Endpoint: A full URL where the client sends a request to access a resource on the server.
+
+Example: https://myapi.com/api/users/1
+
+
+
+What is an API Endpoint?
+An API endpoint is a specific URL on a server where a client (like a browser or mobile app) can access or send data.

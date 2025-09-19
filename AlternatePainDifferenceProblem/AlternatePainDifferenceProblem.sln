@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlternatePainDifferenceProblem", "AlternatePainDifferenceProblem\AlternatePainDifferenceProblem.csproj", "{1B21794C-1578-44FD-9ECE-E3A5571827B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B21794C-1578-44FD-9ECE-E3A5571827B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B21794C-1578-44FD-9ECE-E3A5571827B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B21794C-1578-44FD-9ECE-E3A5571827B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B21794C-1578-44FD-9ECE-E3A5571827B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34BE5444-1E51-4658-B452-2B437B7C0D40}
+	EndGlobalSection
+EndGlobal

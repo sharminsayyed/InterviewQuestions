@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReverStirng", "ReverStirng\ReverStirng.csproj", "{881BAFF4-EE2C-4BD8-AFC6-6BF70C2348F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{881BAFF4-EE2C-4BD8-AFC6-6BF70C2348F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{881BAFF4-EE2C-4BD8-AFC6-6BF70C2348F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{881BAFF4-EE2C-4BD8-AFC6-6BF70C2348F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{881BAFF4-EE2C-4BD8-AFC6-6BF70C2348F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B9755D96-101F-4F8A-84A4-1D72F66C2094}
+	EndGlobalSection
+EndGlobal

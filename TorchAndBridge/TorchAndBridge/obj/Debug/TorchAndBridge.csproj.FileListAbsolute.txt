@@ -1,0 +1,8 @@
+F:\Sharmin\InterviewQuestions\TorchAndBridge\TorchAndBridge\bin\Debug\TorchAndBridge.exe.config
+F:\Sharmin\InterviewQuestions\TorchAndBridge\TorchAndBridge\bin\Debug\TorchAndBridge.exe
+F:\Sharmin\InterviewQuestions\TorchAndBridge\TorchAndBridge\bin\Debug\TorchAndBridge.pdb
+F:\Sharmin\InterviewQuestions\TorchAndBridge\TorchAndBridge\obj\Debug\TorchAndBridge.csproj.AssemblyReference.cache
+F:\Sharmin\InterviewQuestions\TorchAndBridge\TorchAndBridge\obj\Debug\TorchAndBridge.csproj.CoreCompileInputs.cache
+F:\Sharmin\InterviewQuestions\TorchAndBridge\TorchAndBridge\obj\Debug\TorchAndBridge.exe
+F:\Sharmin\InterviewQuestions\TorchAndBridge\TorchAndBridge\obj\Debug\TorchAndBridge.pdb
+F:\Sharmin\InterviewQuestions\TorchAndBridge\TorchAndBridge\obj\Debug\TorchAndBridge.exe.config

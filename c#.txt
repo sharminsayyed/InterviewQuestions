@@ -1,0 +1,94 @@
+.what is the difference between ref and out keyword when should we  used each of them 
+By using ref and out keywords we can pass parameters by reference. 
+When you want to return more than one values from a method then you can use 
+out and ref parameters.Third difference is, one will use ref parameter when you want to modify a value 
+and out parameter when you want to get a new value from the called method.
+
+.what is inheritance and how it elps in code reusebaility 
+It helps in code reusability because you don’t need to rewrite the same code again; instead, the child class can reuse and extend the parent’s code.
+
+• Why do you use an Interface?
+One is to achieve Multiple Inheritance in C# as abstract classes do not support 
+multiple inheritance. 
+2. Second reason is to maintain a consistency between different derived classes. 
+
+ • What is Middleware? Can you name some built-in middleware?
+ UseRouting ,
+UseAuthentication 
+UseAuthorization 
+UseStaticFiles 
+UseCors 
+ 
+ • How do you transfer data from a Controller to a View?
+ ViewData & ViewBag are used to pass data from CONTROLLER TO VIEW.
+
+
+• Difference between Authentication and Authorization
+Authentication is the process of obtaining some sort of credentials 
+(username, password) from the users and using those credentials to verify 
+the USER'S IDENTITY.  
+Authorization is the process of allowing an authenticated user ACCESS to 
+resources.  
+
+
+ • If an async method is executed, does it create a new thread under the hood?
+ • How do you stop two different threads from accessing the same method?
+
+ • What is a Delegate? Can you name some built-in delegates?
+action(returns a value) ,func(does not return value) ,predicate(returns bool)
+
+ • In Entity Framework, how do you join two tables?
+Using Navigation Properties
+public class Employee
+{
+    public int EmployeeId { get; set; }
+    public string Name { get; set; }
+
+    public int DepartmentId { get; set; }
+    public Department Department { get; set; } // Navigation property
+}
+ • If REST is stateless, why is it called a RESTful API?
+
+• What is async/await?
+"async allows a method to run in the background without blocking the main program , and await waits for it to finish without freezing the program."
+
+• What is a thread?
+A thread is the smallest unit of execution in a program.
+
+
+ 
+
+
+🔹 SQL
+ • Write a query to delete duplicate rows from a table.
+ • Write a query: You have a Country table with all country details. Display “India” first, and then the rest in alphabetical order.
+ • Write a query to get the second highest salary from a table. (Most common SQL question I faced)
+SELECT DepartmentId, AVG(Salary) AS AvgSalary
+FROM Employee
+GROUP BY DepartmentId
+HAVING AVG(Salary) > 50000;
+
+ • Questions related to GROUP BY and HAVING.
+group by is used to group similar data 
+HAVING is used to filter groups created by GROUP BY
+
+🔹 SQL
+
+• Query to select duplicate rows
+SELECT Name, Email, COUNT(*) AS cnt
+FROM Employees
+GROUP BY Name, Email
+HAVING COUNT(*) > 1;
+
+• Query to get the highest salary from each department (Tables: Employee, Department, Salary)
+SELECT d.DepartmentName, MAX(e.Salary) AS MaxSalary
+FROM Employee e
+INNER JOIN Department d ON e.DepartmentId = d.DepartmentId
+GROUP BY d.DepartmentName;
+
+
+
+
+
+
+
