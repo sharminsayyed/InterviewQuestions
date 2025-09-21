@@ -54,7 +54,9 @@ namespace BSTtraversal
             root.right = new Node(3);
             root.left.left = new Node(4);
             root.left.right = new Node(5);
+
             BST tree = new BST();
+
             Console.Write("Inorder: ");
             tree.inorder(root);           
             Console.WriteLine();

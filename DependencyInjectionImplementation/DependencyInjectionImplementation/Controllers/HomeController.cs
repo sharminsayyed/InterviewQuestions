@@ -7,13 +7,13 @@ namespace DependencyInjectionImplementation.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        
 
         private readonly IMessaging _message;
 
-        public HomeController(ILogger<HomeController> logger, IMessaging message)
+        public HomeController( IMessaging message)
         {
-            _logger = logger;
+          
             _message = message;
         }
 
@@ -23,15 +23,6 @@ namespace DependencyInjectionImplementation.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+       
     }
 }

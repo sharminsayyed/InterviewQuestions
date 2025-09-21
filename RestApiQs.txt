@@ -47,15 +47,8 @@ Code	Meaning	Example
 HOW TO TEST WEB API? WHAT ARE THE TOOLS?
 POSTMAN & SWAGGER tools.  are used to test api
 
-How do you secure a Web API?
-Common methods:
-API Key – Client sends a secret key in headers.
-JWT (JSON Web Token) – Stateless token-based authentication.
-OAuth2 – Token-based authorization for third-party access.
-HTTPS – Encrypts data in transit.
-CORS policies – Restrict which domains can call your API.
 
-1[Route] Attribute
+[Route] Attribute
 
 Defines the URL pattern for a controller or action.
 
@@ -75,19 +68,61 @@ Can be applied at controller level or action level.
         //It helps control what data you expose from your models (like your Employee table).
 
 
+What is Logging? -- using ilogger or serilog 
+Logging means writing down messages about what your app is doing (like saving notes). These notes can be about normal actions, warnings, or errors.
+
+How do you secure a Web API?
+Common methods:
+API Key – Client sends a secret key in headers.
+JWT (JSON Web Token) – Stateless token-based authentication.
+OAuth2 – Token-based authorization for third-party access.
+HTTPS – Encrypts data in transit.
+CORS policies – Restrict which domains can call your API.
+
+ WHAT IS TOKEN BASED AUTHENTICATION? 
+1)client first sends request to the Authentication server with valid credentials
+2) Authentication server /web api then sends Access Token to the client as a response .This token has a expiry time 
+3) Client uses this Access token in the header for every next request to access the protected apis 
+4)if the Access Token is expired , then the client can request a new Access token by using refresh token 
+
+JWT authentication is a token base authentication where JWT is a token 
+format. 
+A JWT token is like a digital ID card that proves who you are when you use a website or API.
+A string (long text) made of 3 parts (Header, Payload, Signature).
+Used to securely pass user identity and claims between client and server.
+Header - algorithm - algo used to generate the token
+	type - type of token which is jwt 
+payload - contains the actual the data like name ,role 
+Signature - Used to verify that the issuer is correct and the token is authentic.
 
 
+ WHAT IS OAUTH? 
+OAuth is a standard for creating token based authentication and authorization.
 
-6. What are URI and Endpoint?
-URI (Uniform Resource Identifier): A string used to identify a resource.
+WHAT IS API KEY AUTHENTICATION IN WEB API? 
+API Key Authentication- In API Key Authentication, the API owner will share an 
+API key with the users and this key will authenticate the users of that API.
 
-Example: /api/users/1 – refers to user with ID 1.
+API INTEGRATION?
+API integration means connecting two or more software systems/applications so they can share data and work together using APIs
+FLOW OF API INTEGRATION
+1)The .NET application (client) needs data from an API.
+2)It uses HttpClient to create a request.
+3)The request includes:
+	HTTP method (GET, POST, PUT, DELETE)
+	Headers
+	Authentication tokens
+	Request body (if needed)
+4)The request is sent over the internet to the API endpoint.
+5)The API processes the request and performs the required operations.
+6)The API returns a response with:
+	HTTP status code (200, 400, etc.)
+	Data in JSON or XML format
+7)The client parses the JSON/XML into C# objects using JsonSerializer or Newtonsoft.Json.
+8)The application uses the parsed data as needed.
 
-Endpoint: A full URL where the client sends a request to access a resource on the server.
-
-Example: https://myapi.com/api/users/1
-
-
+why mvc project should have a support for api
+Even though MVC is for server-rendered pages, having APIs makes the project more dynamic. The frontend can get data or perform actions like delete or update without reloading the page.
 
 What is an API Endpoint?
 An API endpoint is a specific URL on a server where a client (like a browser or mobile app) can access or send data.

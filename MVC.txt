@@ -18,8 +18,6 @@ application.
 
 Explain Dependency injection?
 DI is a practise of providing dependent object of a class is injected from outside the class rather than the class creating using the new keyword
-It allows you to inject objects (services, repositories, etc.) that a class needs, rather than the class creating them itself
-Instead of creating dependencies manually, they are provided to your class by the framework.
 Dependency Injection (DI) is a software design pattern that allows us to develop 
 loosely coupled code.
 Loosely coupled code means that different parts of your program (classes, methods, modules) are independent and flexible, so changes in one part don’t force changes in another.
@@ -150,7 +148,11 @@ Configure() - we add middleware - use this method to configure the the Http requ
 
 What is Razor ?
 it is vieew engine in which we can write html and c# code together 
-	
+
+what is razor pages ?
+it is a page-based programming model 
+similar to mvc , but instead of having separate controllers and view ,the logic and ui are combined into a single file .
+
 What is Routing ?
 Routing is used to handle incoming HTTP requests based on the URL.
 It is a process that maps the incoming HTTP request / Url to controller action 

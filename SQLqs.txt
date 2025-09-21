@@ -86,6 +86,12 @@ Consistency: Data must always be valid and follow rules.
 Isolation: Tasks run separately, even if done at the same time.
 Durability: Once saved, the data won’t be lost — even if system crashes.
 
+A stored procedure is like a saved set of instructions in the database. Instead of writing the same SQL queries again and again, you save them as a procedure and run it whenever you need.
+It can take input values.
+It can give output values.
+It can do many things like select, insert, update, or delete data.
+“Stored procedures don’t return values the way functions do. Instead, they can return result sets, output parameters, or an integer status code. If we need to return a value directly, a function is more appropriate.”
+
 What is the difference between UNION and UNION ALL?
 UNION: Combines results and removes duplicates
 UNION ALL: Combines results and keeps duplicates
